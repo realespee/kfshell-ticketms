@@ -1,0 +1,144 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-02-16 12:01:12.333639",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "raise_date",
+  "state",
+  "column_break_fqk63",
+  "city",
+  "site_name",
+  "section_break_vagj1",
+  "type",
+  "column_break_glf1b",
+  "nmpi_category",
+  "column_break_gxjm9",
+  "nmpi_action",
+  "section_break_bvlvf",
+  "assign_to",
+  "column_break_fbvyv",
+  "description",
+  "comment",
+  "upload_photos_videos_or_documents",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "raise_date",
+   "fieldtype": "Date",
+   "label": "Raise Date"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Select",
+   "label": "State"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Select",
+   "label": "City"
+  },
+  {
+   "fieldname": "site_name",
+   "fieldtype": "Select",
+   "label": "Site Name"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nNear Miss\nPotential Incident\nPositive Intervention"
+  },
+  {
+   "fieldname": "nmpi_category",
+   "fieldtype": "Select",
+   "label": "NMPI Category"
+  },
+  {
+   "fieldname": "nmpi_action",
+   "fieldtype": "Data",
+   "label": "NMPI Action"
+  },
+  {
+   "fieldname": "assign_to",
+   "fieldtype": "Data",
+   "label": "Assign To"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Comment"
+  },
+  {
+   "fieldname": "upload_photos_videos_or_documents",
+   "fieldtype": "Attach",
+   "label": "Upload Photos, Videos, or Documents"
+  },
+  {
+   "fieldname": "column_break_fqk63",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_vagj1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Ticket",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_glf1b",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gxjm9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_bvlvf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_fbvyv",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-02-16 12:26:31.923448",
+ "modified_by": "Administrator",
+ "module": "Ticket Ms",
+ "name": "Ticket",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

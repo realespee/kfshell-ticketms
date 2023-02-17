@@ -4,3 +4,4 @@
 *.swp
 tags
 ticket_ms/docs/current
+node_modules/

@@ -1,12 +1,10 @@
 from . import __version__ as app_version
 
 app_name = "ticket_ms"
-app_title = "Ticket Ms"
+app_title = "Ticket MS"
 app_publisher = "Simon Wanyama"
-app_description = "Ticket Management System"
-app_icon = "octicon octicon-file-directory"
-app_color = "blue"
-app_email = "simon.w@indictranstech.com"
+app_description = "Ticket Management System for Knight Frank and Shell"
+app_email = "wanyamasp@gmail.com"
 app_license = "MIT"
 
 # Includes in <head>
@@ -52,6 +50,15 @@ app_license = "MIT"
 
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
+
+# Jinja
+# ----------
+
+# add methods and filters to jinja environment
+# jinja = {
+#	"methods": "ticket_ms.utils.jinja_methods",
+#	"filters": "ticket_ms.utils.jinja_filters"
+# }
 
 # Installation
 # ------------
@@ -118,10 +125,10 @@ app_license = "MIT"
 #	],
 #	"weekly": [
 #		"ticket_ms.tasks.weekly"
-#	]
+#	],
 #	"monthly": [
 #		"ticket_ms.tasks.monthly"
-#	]
+#	],
 # }
 
 # Testing
@@ -147,30 +154,35 @@ app_license = "MIT"
 #
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
+# Ignore links to specified DocTypes when deleting documents
+# -----------------------------------------------------------
+
+# ignore_links_on_delete = ["Communication", "ToDo"]
+
 
 # User Data Protection
 # --------------------
 
-user_data_fields = [
-	{
-		"doctype": "{doctype_1}",
-		"filter_by": "{filter_by}",
-		"redact_fields": ["{field_1}", "{field_2}"],
-		"partial": 1,
-	},
-	{
-		"doctype": "{doctype_2}",
-		"filter_by": "{filter_by}",
-		"partial": 1,
-	},
-	{
-		"doctype": "{doctype_3}",
-		"strict": False,
-	},
-	{
-		"doctype": "{doctype_4}"
-	}
-]
+# user_data_fields = [
+#	{
+#		"doctype": "{doctype_1}",
+#		"filter_by": "{filter_by}",
+#		"redact_fields": ["{field_1}", "{field_2}"],
+#		"partial": 1,
+#	},
+#	{
+#		"doctype": "{doctype_2}",
+#		"filter_by": "{filter_by}",
+#		"partial": 1,
+#	},
+#	{
+#		"doctype": "{doctype_3}",
+#		"strict": False,
+#	},
+#	{
+#		"doctype": "{doctype_4}"
+#	}
+# ]
 
 # Authentication and authorization
 # --------------------------------
@@ -178,4 +190,3 @@ user_data_fields = [
 # auth_hooks = [
 #	"ticket_ms.auth.validate"
 # ]
-

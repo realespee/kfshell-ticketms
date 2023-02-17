@@ -1,6 +1,6 @@
-## Ticket Ms
+## Ticket MS
 
-Ticket Management System
+Ticket Management System for Knight Frank and Shell
 
 #### License
 

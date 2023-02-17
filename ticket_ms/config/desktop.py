@@ -3,10 +3,8 @@ from frappe import _
 def get_data():
 	return [
 		{
-			"module_name": "Ticket Ms",
-			"color": "blue",
-			"icon": "octicon octicon-file-directory",
+			"module_name": "Ticket MS",
 			"type": "module",
-			"label": _("Ticket Ms")
+			"label": _("Ticket MS")
 		}
 	]

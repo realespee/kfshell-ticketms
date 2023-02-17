@@ -9,9 +9,9 @@ from ticket_ms import __version__ as version
 setup(
 	name="ticket_ms",
 	version=version,
-	description="Ticket Management System",
+	description="Ticket Management System for Knight Frank and Shell",
 	author="Simon Wanyama",
-	author_email="simon.w@indictranstech.com",
+	author_email="wanyamasp@gmail.com",
 	packages=find_packages(),
 	zip_safe=False,
 	include_package_data=True,
