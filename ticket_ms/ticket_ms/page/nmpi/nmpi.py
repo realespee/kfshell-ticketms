@@ -15,7 +15,13 @@ def nmpi_page_data():
         },
         fields=['description', 'status', 'priority', 'reference_name']
     )
-    return {'total_nmpi':total_nmpi, 'total_open_tickets':total_open_tickets, 'total_closed_tickets':total_closed_tickets, 'assigned':assigned_tickets}
+    return {
+        'total_nmpi':total_nmpi, 
+        'total_open_tickets':total_open_tickets, 
+        'total_closed_tickets':total_closed_tickets,
+        'cancelled': total_nmpi - (total_open_tickets + total_closed_tickets),
+        'assigned':assigned_tickets
+    }
 
 
 @frappe.whitelist()

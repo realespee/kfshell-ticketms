@@ -6,54 +6,28 @@ frappe.ui.form.on('NMPI Ticket', {
 		// Hide Action button and pull out Resolve
 		$(".actions-btn-group").hide()
 
-		if(frm.doc.workflow_state == "Open"){
+		if((!frm.is_new()) && (frm.doc.workflow_state == "Open")){
 			frm.add_custom_button("Resolve", ()=>{
-				let d = new frappe.ui.Dialog({
-					title: 'Confirm',
-					indicator: 'blue',
-					message: __('Are you sure you want to Close this ticket?'),
-					primary_action_label: 'Close',
-					primary_action(values) {
-						console.log(values);
+				frappe.confirm(
+					"Are you sure you want to Resolve this Ticket?",
+					function(){ // IF YES
+						// show_alert('Thanks for continue here!')
 						// Submit
 						frm.set_value("workflow_state", "Closed")
-						frm.refresh_field("workflow_state")
 						frm.save()
-
-						//Update To Do close_todo_ticket
-						frappe.call({
-							method:"ticket_ms.ticket_ms.doctype.nmpi_ticket.nmpi_ticket.close_todo_ticket",
-							args: {"ticket": frm.doc.name},
-							callback: function(r){
-								// Nothing here | May change this call to proper one
-							}
-						})
-
-						// Hide the acknowledgement
-						d.hide();
-
+						// Close the Confirm dialogue
+						window.close();
+						// Update To Do
+						frm.trigger("close_todo_ticket")
 						// Show Success
-						frm.doc.assign_to ? frappe.msgprint({
-							title: __('Success'),
-							indicator: 'green',
-							message: __(
-								`Your NMPI No. ${frm.doc.name} is successfully submitted and email sent to 
-								Observer (${frappe.session.user}) & assigned to (${frm.doc.assign_to}).
-								`
-								)
-						}) : frappe.msgprint({
-							title: __('Confirmation'),
-							indicator: 'green',
-							message: __(
-								`Your NMPI No. ${frm.doc.name} is successfully submitted and email sent to 
-								Observer (${frappe.session.user})
-								`
-								)
-						})
+						setTimeout(() => {
+							frm.trigger("show_success_notification")
+						  }, 1.0 * 1000);
+					},
+					function(){ // IF NO
+						window.close();
 					}
-				});
-				
-				d.show();
+				)
 			}).addClass('btn btn-primary')
 		}
 
@@ -76,31 +50,33 @@ frappe.ui.form.on('NMPI Ticket', {
 		frm.set_value("raise_date", date_today)
 		frm.refresh_field('raise_date')
 	},
-	on_submit: function(frm) {
+	show_success_notification: function(frm){
+		frm.doc.assign_to ? frappe.msgprint({
+			title: __('Success'),
+			indicator: 'green',
+			message: __(
+				`Your NMPI No. ${frm.doc.name} is successfully submitted and email sent to 
+				Observer (${frappe.session.user}) & assigned to (${frm.doc.assign_to}).
+				`
+				)
+		}) : frappe.msgprint({
+			title: __('Success'),
+			indicator: 'green',
+			message: __(
+				`Your NMPI No. ${frm.doc.name} is successfully submitted and email sent to 
+				Observer (${frappe.session.user})
+				`
+				)
+		})
+	},
+	close_todo_ticket: function(frm){
+		console.log(frm.workflow_state)
 		frappe.call({
-			method: 'ticket_ms.ticket_ms.doctype.nmpi_ticket.nmpi_ticket.fetch_observer_email',
-			args: {
-				'site': frm.doc.site_name
-			},
-			callback: function(r) {
-				frm.doc.assign_to ? frappe.msgprint({
-					title: __('Confirmation'),
-					indicator: 'green',
-					message: __(
-						`Your NMPI No. ${frm.doc.name} is successfully submitted and email sent to 
-						Observer (${frappe.session.user}) & assigned to (${frm.doc.assign_to}).
-						`
-						)
-				}) : frappe.msgprint({
-					title: __('Confirmation'),
-					indicator: 'green',
-					message: __(
-						`Your NMPI No. ${frm.doc.name} is successfully submitted and email sent to 
-						Observer (${frappe.session.user})
-						`
-						)
-				})
+			method:"ticket_ms.ticket_ms.doctype.nmpi_ticket.nmpi_ticket.close_todo_ticket",
+			args: {"ticket": frm.doc.name},
+			callback: function(r){
+				// Nothing here | May change this call to proper one
 			}
-		});
-	}
+		})
+	},
 });

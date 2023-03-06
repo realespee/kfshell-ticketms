@@ -45,7 +45,7 @@ def close_todo_ticket(ticket):
 			"reference_name": ticket
         }
     )
-
-	doc = frappe.get_doc("ToDo", assigned_ticket[0]["name"])
-	doc.status = "Closed"
-	doc.save(ignore_permissions=True)
+	if(len(assigned_ticket)>0):
+		doc = frappe.get_doc("ToDo", assigned_ticket[0]["name"])
+		doc.status = "Closed"
+		doc.save(ignore_permissions=True)
