@@ -14,7 +14,7 @@ frappe.ui.form.on('NMPI Ticket', {
 						// show_alert('Thanks for continue here!')
 						// Submit
 						frm.set_value("workflow_state", "Closed")
-						frm.save()
+						frm.save('Submit');
 						// Close the Confirm dialogue
 						window.close();
 						// Update To Do
