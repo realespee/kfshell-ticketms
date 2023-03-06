@@ -12,7 +12,7 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ticket_ms/css/ticket_ms.css"
-# app_include_js = "/assets/ticket_ms/js/ticket_ms.js"
+app_include_js = "/assets/ticket_ms/js/ticket_ms.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/ticket_ms/css/ticket_ms.css"
@@ -29,6 +29,9 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
+doctype_js = {
+        "Address" : "custom_script/address/address.js", 
+	}
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -190,3 +193,8 @@ app_license = "MIT"
 # auth_hooks = [
 #	"ticket_ms.auth.validate"
 # ]
+
+fixtures = [
+    "Custom Field",
+    "Print Format"
+]

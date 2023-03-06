@@ -33,6 +33,18 @@
    "reqd": 1
   },
   {
+   "fieldname": "site_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Site Name",
+   "options": "Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_fqk63",
+   "fieldtype": "Column Break"
+  },
+  {
    "fetch_from": "site_name.state",
    "fieldname": "state",
    "fieldtype": "Data",
@@ -47,12 +59,8 @@
    "reqd": 1
   },
   {
-   "fieldname": "site_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Site Name",
-   "options": "Site",
-   "reqd": 1
+   "fieldname": "section_break_vagj1",
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "type",
@@ -70,6 +78,10 @@
    "reqd": 1
   },
   {
+   "fieldname": "column_break_glf1b",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "nmpi_action",
    "fieldtype": "Select",
    "label": "NMPI Action",
@@ -84,9 +96,17 @@
    "mandatory_depends_on": "eval:doc.nmpi_action==\"Corrective Action Required\";"
   },
   {
+   "fieldname": "section_break_bvlvf",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "description",
    "fieldtype": "Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "column_break_m7eeb",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "comment",
@@ -99,42 +119,22 @@
    "label": "Upload Photos, Videos, or Documents"
   },
   {
-   "fieldname": "column_break_fqk63",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_vagj1",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Ticket",
+   "options": "Issue Ticket",
    "print_hide": 1,
    "read_only": 1
-  },
-  {
-   "fieldname": "column_break_glf1b",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_bvlvf",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_m7eeb",
-   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-20 09:16:35.952126",
+ "modified": "2023-02-22 11:05:25.890121",
  "modified_by": "Administrator",
  "module": "Ticket MS",
- "name": "Ticket",
+ "name": "Issue Ticket",
  "owner": "Administrator",
  "permissions": [
   {
