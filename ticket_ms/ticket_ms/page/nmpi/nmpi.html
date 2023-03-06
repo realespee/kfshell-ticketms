@@ -1,0 +1,160 @@
+<!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+<div class="sidebar">
+    <div class="logo_details">
+        <div class="logo_name">Knight Frank</div>
+        <i class="fa fa-bars" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+        <!-- <li>
+            <i class="bx bx-search"></i>
+            <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+        </li> -->
+        <li>
+            <a href="/app/nmpi-ticket">
+                <i class="fa fa-ticket"></i>
+                <span class="link_name">NMPI Ticket</span>
+            </a>
+            <span class="tooltip">NMPI Ticket</span>
+        </li>
+        <li>
+            <a href="/app/address">
+                <i class="fa fa-sitemap"></i>
+                <span class="link_name">Site</span>
+            </a>
+            <span class="tooltip">Site</span>
+            </li>
+        <li>
+            <a href="/app/query-report/Site">
+                <i class="fa fa-bar-chart"></i>
+                <span class="link_name">Site Report</span>
+            </a>
+            <span class="tooltip">Site Report</span>
+        </li>
+        <li>
+            <a href="/app/query-report/NMPI">
+                <i class="fa fa-pie-chart"></i>
+                <span class="link_name">NMPI Report</span>
+            </a>
+            <span class="tooltip">NMPI Report</span>
+        </li>
+        <!-- <li>
+            <a href="#">
+                <i class="bx bx-folder"></i>
+                <span class="link_name">File Manger</span>
+            </a>
+            <span class="tooltip">File Manger</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-cart-alt"></i>
+                <span class="link_name">Order</span>
+            </a>
+            <span class="tooltip">Order</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-cog"></i>
+                <span class="link_name">Settings</span>
+            </a>
+            <span class="tooltip">Settings</span>
+        </li> -->
+        <li class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpeg" alt="profile image"> -->
+                <i class="fa fa-user"></i>
+                <div class="profile_content">
+                    <div class="name">{{frappe.session.user_fullname}}</div>
+                </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <div class="widget-group wgt-group">
+        <div class="widget-group-head">
+    
+            <div class="widget-group-control"></div>
+        </div>
+        <div class="widget-group-body grid-col-3">
+            <div class="widget         widget-shadow    number-widget-box" data-widget-name="Total NMPI Tickets">
+                <div class="widget-head">
+                    <div class="widget-label">
+                        <div class="widget-title">
+                            <div class="number-label" _msttexthash="645866" _msthash="309">Total NMPI Tickets</div>
+                        </div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-content">
+                        <div id="total-nmpi" class="number" style="color:undefined" _msttexthash="4368" _msthash="313">{{data.total_nmpi}}</div>
+                    </div>
+                </div>
+                <div class="widget-footer">
+                </div>
+            </div>
+            <div class="widget         widget-shadow    number-widget-box" data-widget-name="Open Tickets">
+                <div class="widget-head">
+                    <div class="widget-label">
+                        <div class="widget-title">
+                            <div class="number-label" _msttexthash="459524" _msthash="314">Open Tickets</div>
+                        </div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-content">
+                        <div id="open-nmpi" class="number" style="color:undefined" _msttexthash="4368" _msthash="318">{{data.total_open_tickets}}</div>
+                    </div>
+                </div>
+                <div class="widget-footer">
+                </div>
+            </div>
+            <div class="widget widget-shadow number-widget-box"
+                data-widget-name="Closed Tickets">
+                <div class="widget-head">
+                    <div class="widget-label">
+                        <div class="widget-title">
+                            <div class="number-label" _msttexthash="828126" _msthash="319">Closed Tickets
+                            </div>
+                        </div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-content">
+                        <div id="closed-nmpi" class="number" style="color:undefined" _msttexthash="785785" _msthash="323">{{data.total_closed_tickets}}</div>
+                    </div>
+                </div>
+                <div class="widget-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Data Table for Assigned Tickets -->
+    <div class="datatable">
+        <h3 id="data-heading">Assigned Tickets</h3>
+        <table class="table table-hover table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Reference Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in data.assigned %}
+                <tr>
+                    <th scope="row"><a href="nmpi-ticket/{{ticket.reference_name}}">{{ ticket.description }}</a></th>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.priority }}</td>
+                    <td>{{ ticket.reference_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
