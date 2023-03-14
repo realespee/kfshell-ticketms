@@ -12,7 +12,7 @@ frappe.pages['nmpi'].on_page_load = function(wrapper) {
 
 			// Button | New Ticket
 			let $btn = page.set_primary_action('New Ticket', () => frappe.set_route('Form', 'NMPI Ticket', 'new-nmpi-ticket'), 'octicon octicon-plus')
-			
+			document.getElementsByTagName('span')[54].className = ``
 			// Render HTML Template
 			$(frappe.render_template("nmpi", {
 				data: r.message
