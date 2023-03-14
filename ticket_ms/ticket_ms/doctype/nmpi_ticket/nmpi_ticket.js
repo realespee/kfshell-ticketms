@@ -3,6 +3,7 @@
 
 frappe.ui.form.on('NMPI Ticket', {
 	refresh: function(frm){
+		filter_site(frm)
 		// Hide Action button and pull out Resolve
 		$(".actions-btn-group").hide()
 
@@ -79,4 +80,45 @@ frappe.ui.form.on('NMPI Ticket', {
 			}
 		})
 	},
+	region (frm){
+		filter_site(frm)
+		let filters = {}
+		if (frm.doc.region) {
+			filters = {region: frm.doc.region}
+		}
+		frm.set_query('city', function (frm) {
+			return {
+				filters: filters
+			}
+		});
+	},
+	city (frm){
+		filter_site(frm)
+	},
+	division (frm) {
+		filter_site(frm)
+	}
 });
+
+let filter_site = function (frm){
+	/*
+		filter the site with region, city and division
+	*/
+	let filters = {};
+	if (frm.doc.region) {
+		filters['region'] = frm.doc.region
+	}
+	if (frm.doc.city) {
+		filters['city'] = frm.doc.city
+	}
+	if (frm.doc.division) {
+		filters['division'] = frm.doc.division
+	}
+	if (filters){
+		frm.set_query('site_name', function (frm) {
+			return {
+				filters: filters
+			}
+		});
+	}
+}
