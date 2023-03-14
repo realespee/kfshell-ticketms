@@ -6,11 +6,13 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "raise_date",
-  "site_name",
-  "column_break_fqk63",
+  "region",
+  "division",
   "state",
+  "column_break_fqk63",
   "city",
+  "site_name",
+  "raise_date",
   "section_break_vagj1",
   "type",
   "nmpi_category",
@@ -53,11 +55,13 @@
    "reqd": 1
   },
   {
-   "fetch_from": "site_name.city",
+   "fetch_from": "site_name.site_city",
+   "fetch_if_empty": 1,
    "fieldname": "city",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "City",
+   "options": "Location",
    "reqd": 1
   },
   {
@@ -136,12 +140,26 @@
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Attachments"
+  },
+  {
+   "fetch_from": "site_name.region",
+   "fieldname": "region",
+   "fieldtype": "Select",
+   "label": "Region",
+   "options": "\nNorth\nWest\nSouth\nEast"
+  },
+  {
+   "fetch_from": "site_name.division",
+   "fieldname": "division",
+   "fieldtype": "Select",
+   "label": "Division",
+   "options": "\nFAMS\nAssets Services"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-27 15:29:50.233987",
+ "modified": "2023-03-14 09:18:08.893006",
  "modified_by": "Administrator",
  "module": "Ticket MS",
  "name": "NMPI Ticket",
