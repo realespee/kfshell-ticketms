@@ -30,9 +30,10 @@ def login(user, pwd):
     except frappe.exceptions.AuthenticationError:
         return response( "Authentication Error!", {}, False, 400)
     # generate api key and secret
-    api_secret = frappe.core.doctype.user.user.generate_keys(frappe.session.user)
+    frappe.set_user('Administrator')
+    api_secret = frappe.core.doctype.user.user.generate_keys(user)
     data = {
             'api_secret': api_secret['api_secret'],
-            'api_key': frappe.db.get_value('User', frappe.session.user, 'api_key')
+            'api_key': frappe.db.get_value('User', user, 'api_key')
             }
     return response('Success', data, True, 200)
